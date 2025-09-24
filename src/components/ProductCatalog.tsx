@@ -83,14 +83,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
       
       <Grid container spacing={2}>
         {filteredProducts.map((product) => (
-      <Grid 
-  item 
-  xs={6} // на всех экранах >0px – две карточки в ряд
-  sm={6} // можно оставить
-  md={4} 
-  lg={3} 
-  key={product.id}
->
+      <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
   <ProductCard product={product} />
 </Grid>
         ))}
