@@ -86,16 +86,10 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
           <Grid 
             item 
             xs={6}
-            sm={6} 
-            md={4} 
-            lg={3} 
+            sm={6}
+            md={4}
+            lg={3}
             key={product.id}
-            sx={{
-              '@media (max-width: 350px)': {
-                flexBasis: '50%',
-                maxWidth: '50%',
-              },
-            }}
           >
             <ProductCard product={product} />
           </Grid>
