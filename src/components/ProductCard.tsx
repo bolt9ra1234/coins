@@ -63,13 +63,13 @@ const BuyButton = styled(Button)(({ theme }) => ({
 
 const DetailsButton = styled(Button)(({ theme }) => ({
   width: '100%',
-  height: 60,
+  height: 40,
   borderRadius: 35,
   backgroundColor: 'transparent',
   color: '#111111',
   fontFamily: 'Inknut Antiqua, serif',
-  fontWeight: 500,
-  fontSize: '1.8rem',
+  fontWeight: 700,
+  fontSize: '16px',
   textTransform: 'none',
   border: '4px solid #000000',
   '&:hover': {
