@@ -13,7 +13,7 @@ import { addToCart } from '../store/cartSlice';
 import { Product } from '../types/product';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  flex: 1,
+
   maxWidth: '100%',
   backgroundColor: '#191818',
   borderRadius: 50,
