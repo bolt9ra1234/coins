@@ -30,7 +30,7 @@ const GameTitle = styled(Typography)(({ theme }) => ({
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 700,
   color: '#f5f5f5',
-  fontSize: '24px',
+  fontSize: '18px',
   lineHeight: 1.2,
   textAlign: 'center',
   marginBottom: theme.spacing(2),
