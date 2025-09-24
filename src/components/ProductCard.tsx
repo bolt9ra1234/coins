@@ -19,7 +19,6 @@ const StyledCard = styled(Card)(({ theme }) => ({
   borderRadius: 50,
   overflow: 'hidden',
   position: 'relative',
-  minHeight: 280,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
