@@ -83,9 +83,20 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
       
       <Grid container spacing={2}>
         {filteredProducts.map((product) => (
-      <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
-  <ProductCard product={product} />
-</Grid>
+      <Box
+  sx={{
+    display: 'grid',
+    gap: 2,
+    gridTemplateColumns: '1fr', // по умолчанию 1 колонка
+    '@media (min-width: 370px)': {
+      gridTemplateColumns: '1fr 1fr', // >= 370px — 2 колонки
+    },
+  }}
+>
+  {filteredProducts.map(product => (
+    <ProductCard key={product.id} product={product} />
+  ))}
+</Box>
         ))}
       </Grid>
 
