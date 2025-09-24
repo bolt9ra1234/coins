@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -91,6 +92,7 @@ interface ProductCardProps {
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     dispatch(addToCart({
@@ -100,6 +102,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }));
   };
  
+  const handleShowDetails = () => {
+    navigate(`/product/${product.id}`);
+  };
+
   return (
     <StyledCard>
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -147,7 +153,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         
         <DetailsButton
           variant="outlined"
-          onClick={() => console.log('Подробнее:', product.name)}
+          onClick={handleShowDetails}
         >
           Подробнее
         </DetailsButton>
