@@ -110,13 +110,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   alt={product.name}
   sx={{
     width: '100%',
-    height: 250,
+    height: 'auto', // <-- автоматическая высота
+    maxHeight: 250, // можно ограничить, чтобы карточка не была слишком большой
     borderRadius: 2,
     mb: 2,
-    objectFit: 'contain', // теперь изображение помещается в блок без обрезки
+    objectFit: 'contain', // не обрезает картинку
     backgroundColor: '#333',
-    display: 'block',
-    mx: 'auto', // центрирование по горизонтали
   }}
   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
 />
