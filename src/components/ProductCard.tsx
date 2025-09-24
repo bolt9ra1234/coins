@@ -24,7 +24,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   padding: theme.spacing(2),
-  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)', 
 }));
 
 const GameTitle = styled(Typography)(({ theme }) => ({
