@@ -28,9 +28,9 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 const GameTitle = styled(Typography)(({ theme }) => ({
   fontFamily: 'Inknut Antiqua, serif',
-  fontWeight: 600,
+  fontWeight: 700,
   color: '#f5f5f5',
-  fontSize: '34px',
+  fontSize: '24px',
   lineHeight: 1.2,
   textAlign: 'center',
   marginBottom: theme.spacing(2),
