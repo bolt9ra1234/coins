@@ -53,7 +53,7 @@ const BuyButton = styled(Button)(({ theme }) => ({
   color: '#111111',
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 700,
-  fontSize: '2rem',
+  fontSize: '16px',
   textTransform: 'none',
   marginBottom: theme.spacing(2),
   '&:hover': {
