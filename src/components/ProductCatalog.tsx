@@ -81,7 +81,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
         Каталог
       </Typography>
       
-      <Grid container spacing={1}>
+      <Grid container spacing={2}>
         {filteredProducts.map((product) => (
           <Grid 
            item 
