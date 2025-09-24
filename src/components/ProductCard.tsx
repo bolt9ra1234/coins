@@ -8,6 +8,7 @@ import {
   Box,
   styled,
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
 import { Product } from '../types/product';
@@ -119,6 +120,7 @@ interface ProductCardProps {
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   const handleAddToCart = () => {
     dispatch(addToCart({
