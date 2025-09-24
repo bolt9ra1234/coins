@@ -86,7 +86,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
           <Grid 
             item 
             xs={12}
-            sm={6}
+            sm={8}
             md={4}
             lg={4}
             key={product.id}
