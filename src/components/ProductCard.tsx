@@ -25,10 +25,6 @@ const StyledCard = styled(Card)(({ theme }) => ({
   justifyContent: 'center',
   padding: theme.spacing(2),
   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-  [theme.breakpoints.down('sm')]: {
-    minHeight: 250,
-    padding: theme.spacing(1),
-  },
 }));
 
 const GameTitle = styled(Typography)(({ theme }) => ({
