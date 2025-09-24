@@ -18,11 +18,11 @@ const StyledCard = styled(Card)(({ theme }) => ({
   borderRadius: 50,
   overflow: 'hidden',
   position: 'relative',
-  minHeight: 500,
+  minHeight: 350,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  padding: theme.spacing(3),
+  padding: theme.spacing(2),
   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
 }));
 
@@ -30,7 +30,7 @@ const GameTitle = styled(Typography)(({ theme }) => ({
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 600,
   color: '#f5f5f5',
-  fontSize: '34px',
+  fontSize: '20px',
   lineHeight: 1.2,
   textAlign: 'center',
   marginBottom: theme.spacing(2),
@@ -40,20 +40,20 @@ const PriceText = styled(Typography)(({ theme }) => ({
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 400,
   color: '#f5f5f5',
-  fontSize: '24px',
+  fontSize: '16px',
   textAlign: 'center',
   marginBottom: theme.spacing(3),
 }));
 
 const BuyButton = styled(Button)(({ theme }) => ({
   width: '100%',
-  height: 60,
+  height: 40,
   borderRadius: 35,
   backgroundColor: '#deb544',
   color: '#111111',
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 700,
-  fontSize: '2rem',
+  fontSize: '1.2rem',
   textTransform: 'none',
   marginBottom: theme.spacing(2),
   '&:hover': {
@@ -63,13 +63,13 @@ const BuyButton = styled(Button)(({ theme }) => ({
 
 const DetailsButton = styled(Button)(({ theme }) => ({
   width: '100%',
-  height: 60,
+  height: 40,
   borderRadius: 35,
   backgroundColor: 'transparent',
   color: '#111111',
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 500,
-  fontSize: '1.8rem',
+  fontSize: '1.1rem',
   textTransform: 'none',
   border: '4px solid #000000',
   '&:hover': {
@@ -78,12 +78,12 @@ const DetailsButton = styled(Button)(({ theme }) => ({
 }));
 
 const CoinIcon = styled('img')(({ theme }) => ({
-  width: 40,
-  height: 40,
+  width: 24,
+  height: 24,
   objectFit: 'contain',
-  marginRight: 15,
+  marginRight: 8,
   display: 'block',
-  marginBottom: theme.spacing(3),
+  marginBottom: theme.spacing(2),
 }));
 
 interface ProductCardProps {
@@ -110,7 +110,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   alt={product.name}
   sx={{
     width: '100%',
-    height: 250,   
+    height: 150,   
      maxWidth:350,
     borderRadius: 2,
     mb: 2,
