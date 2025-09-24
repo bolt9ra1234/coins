@@ -40,7 +40,7 @@ const PriceText = styled(Typography)(({ theme }) => ({
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 400,
   color: '#f5f5f5',
-  fontSize: '14px',
+  fontSize: '16px',
   textAlign: 'center',
   marginBottom: theme.spacing(3),
 }));
