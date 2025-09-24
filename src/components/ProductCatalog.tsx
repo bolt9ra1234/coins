@@ -88,7 +88,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
             xs={12}
             sm={6}
             md={4}
-            lg={3}
+            lg={4}
             key={product.id}
           >
             <ProductCard product={product} />
