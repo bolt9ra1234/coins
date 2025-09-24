@@ -22,7 +22,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  padding: theme.spacing(2),
+  padding: theme.spacing(1),
   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
 }));
 
