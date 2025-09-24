@@ -85,7 +85,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
         {filteredProducts.map((product) => (
           <Grid 
             item 
-            xs={6}
+            xs={12}
             sm={6}
             md={4}
             lg={3}
