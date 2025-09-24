@@ -110,17 +110,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   alt={product.name}
   sx={{
     width: '100%',
-    height: 250,   
-     maxWidth:350,
+    height: 250,
     borderRadius: 2,
     mb: 2,
-    objectFit: 'cover',   // картинка обрезается, чтобы заполнить блок
-    backgroundColor: '#333', // на случай прозрачных или не загруженных картинок
+    objectFit: 'contain', // теперь изображение помещается в блок без обрезки
+    backgroundColor: '#333',
+    display: 'block',
+    mx: 'auto', // центрирование по горизонтали
   }}
-  onError={(e) => {
-    const target = e.target as HTMLImageElement
-    target.style.display = 'none'
-  }}
+  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
 />
         
         <GameTitle variant="h1">
