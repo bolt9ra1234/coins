@@ -110,7 +110,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   alt={product.name}
   sx={{
     width: '100%',
-
+    height: "120px",
     maxHeight: 250, // можно ограничить, чтобы карточка не была слишком большой
     borderRadius: 2,
     mb: 2,
