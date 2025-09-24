@@ -14,7 +14,8 @@ import { addToCart } from '../store/cartSlice';
 import { Product } from '../types/product';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  width: '100%',
+  flex: 1,
+  maxWidth: '100%',
   backgroundColor: '#191818',
   borderRadius: 50,
   overflow: 'hidden',
@@ -24,7 +25,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   padding: theme.spacing(2),
-  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)', 
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
 }));
 
 const GameTitle = styled(Typography)(({ theme }) => ({
