@@ -71,7 +71,7 @@ const DetailsButton = styled(Button)(({ theme }) => ({
   fontWeight: 700,
   fontSize: '16px',
   textTransform: 'none',
-  border: '4px solid #000000',
+  border: '2px solid #000000',
   '&:hover': {
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
