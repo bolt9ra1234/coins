@@ -8,7 +8,6 @@ import {
   Box,
   styled,
 } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
 import { Product } from '../types/product';
@@ -20,7 +19,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   borderRadius: 50,
   overflow: 'hidden',
   position: 'relative',
-  minHeight: "400px",
+  minHeight: 280,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -32,45 +31,32 @@ const GameTitle = styled(Typography)(({ theme }) => ({
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 600,
   color: '#f5f5f5',
-  fontSize: '14px',
+  fontSize: '34px',
   lineHeight: 1.2,
   textAlign: 'center',
   marginBottom: theme.spacing(2),
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '12px',
-    marginBottom: theme.spacing(1),
-  },
 }));
 
 const PriceText = styled(Typography)(({ theme }) => ({
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 400,
   color: '#f5f5f5',
-  fontSize: '12px',
+  fontSize: '24px',
   textAlign: 'center',
   marginBottom: theme.spacing(3),
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '10px',
-    marginBottom: theme.spacing(1),
-  },
 }));
 
 const BuyButton = styled(Button)(({ theme }) => ({
   width: '100%',
-  height: 32,
+  height: 60,
   borderRadius: 35,
   backgroundColor: '#deb544',
   color: '#111111',
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 700,
-  fontSize: '0.8rem',
+  fontSize: '2rem',
   textTransform: 'none',
   marginBottom: theme.spacing(2),
-  [theme.breakpoints.down('sm')]: {
-    height: 28,
-    fontSize: '0.7rem',
-    marginBottom: theme.spacing(1),
-  },
   '&:hover': {
     backgroundColor: '#c9a23d',
   },
@@ -78,37 +64,27 @@ const BuyButton = styled(Button)(({ theme }) => ({
 
 const DetailsButton = styled(Button)(({ theme }) => ({
   width: '100%',
-  height: 32,
+  height: 60,
   borderRadius: 35,
   backgroundColor: 'transparent',
   color: '#111111',
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 500,
-  fontSize: '0.7rem',
+  fontSize: '1.8rem',
   textTransform: 'none',
   border: '4px solid #000000',
-  [theme.breakpoints.down('sm')]: {
-    height: 28,
-    fontSize: '0.6rem',
-    border: '2px solid #000000',
-  },
   '&:hover': {
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
 }));
 
 const CoinIcon = styled('img')(({ theme }) => ({
-  width: 16,
-  height: 16,
+  width: 40,
+  height: 40,
   objectFit: 'contain',
-  marginRight: 8,
+  marginRight: 15,
   display: 'block',
-  marginBottom: theme.spacing(2),
-  [theme.breakpoints.down('sm')]: {
-    width: 14,
-    height: 14,
-    marginBottom: theme.spacing(1),
-  },
+  marginBottom: theme.spacing(3),
 }));
 
 interface ProductCardProps {
@@ -116,7 +92,6 @@ interface ProductCardProps {
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
-  const theme = useTheme();
 
   const handleAddToCart = () => {
     dispatch(addToCart({
@@ -132,20 +107,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
 <Box
   component="img"
-  src="https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400"
+  src={product.image}
   alt={product.name}
   sx={{
     width: '100%',
-    height: 100,   
-    maxWidth: '100%',
+    height: 250,   
+     maxWidth:350,
     borderRadius: 2,
     mb: 2,
-    objectFit: 'cover',
-    backgroundColor: '#333',
-    [theme.breakpoints.down('sm')]: {
-      height: 80,
-      mb: 1,
-    },
+    objectFit: 'cover',   // картинка обрезается, чтобы заполнить блок
+    backgroundColor: '#333', // на случай прозрачных или не загруженных картинок
   }}
   onError={(e) => {
     const target = e.target as HTMLImageElement
