@@ -84,12 +84,12 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
       <Grid container spacing={1}>
         {filteredProducts.map((product) => (
           <Grid 
-            item 
-            xs={6}
-            sm={8}
-            md={4}
-            lg={4}
-            key={product.id}
+           item 
+  xs={12}
+  sm={6}
+  md={4}
+  lg={3}
+  key={product.id}
           >
             <ProductCard product={product} />
           </Grid>
