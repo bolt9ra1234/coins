@@ -14,7 +14,7 @@ import { addToCart } from '../store/cartSlice';
 import { Product } from '../types/product';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  width: '100%',
+  width: '500px',
   backgroundColor: '#191818',
   borderRadius: 50,
   overflow: 'hidden',
