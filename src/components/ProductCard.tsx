@@ -16,7 +16,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
   maxWidth: '100%',
   backgroundColor: '#191818',
-  borderRadius: 50,
+  borderRadius: 15,
   overflow: 'hidden',
   position: 'relative',
   display: 'flex',
