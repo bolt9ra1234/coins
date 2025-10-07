@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Badge, IconButton, Box } from '@mui/material';
-import { ShoppingCart } from '@mui/icons-material';
+import { ShoppingCart } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 

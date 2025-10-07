@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, InputAdornment, IconButton } from '@mui/material';
-import { Search, Tune } from '@mui/icons-material';
+import { Search, SlidersHorizontal } from 'lucide-react';
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -31,7 +31,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           endAdornment: (
             <InputAdornment position="end">
               <IconButton sx={{ color: '#CCCCCC' }}>
-                <Tune />
+                <SlidersHorizontal />
               </IconButton>
             </InputAdornment>
           ),

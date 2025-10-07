@@ -8,7 +8,7 @@ import {
   CardContent,
   IconButton,
 } from '@mui/material';
-import { ArrowBack } from '@mui/icons-material';
+import { ArrowLeft } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
 import { Product } from '../types/product';
@@ -127,7 +127,7 @@ const ProductDetails: React.FC = () => {
             },
           }}
         >
-          <ArrowBack />
+          <ArrowLeft />
         </IconButton>
         <Typography variant="h6" sx={{ color: '#FFFFFF', fontWeight: 600 }}>
           Подробности товара
