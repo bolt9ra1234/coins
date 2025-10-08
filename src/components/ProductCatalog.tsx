@@ -1,80 +1,32 @@
-import React, { useState, useMemo } from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import React from 'react';
+import { Box, Typography, Grid, CircularProgress } from '@mui/material';
 import ProductCard from './ProductCard';
-import { Product } from '../types/product';
-
-// Временные данные товаров
-const mockProducts: Product[] = [
-  {
-    id: 1,
-    name: 'Игра - No Name',
-    game: 'No Name',
-    price: 2000,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Игровая валюта для No Name'
-  },
-  {
-    id: 2,
-    name: 'Игра - No Name',
-    game: 'No Name',
-    price: 2000,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Игровая валюта для No Name'
-  },
-  {
-    id: 3,
-    name: 'World of Warcraft Gold',
-    game: 'World of Warcraft',
-    price: 1500,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/735911/pexels-photo-735911.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Золото для WoW'
-  },
-  {
-    id: 4,
-    name: 'Fortnite V-Bucks',
-    game: 'Fortnite',
-    price: 1000,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'В-баксы для Fortnite'
-  },
-  {
-    id: 5,
-    name: 'CS:GO Skin Pack',
-    game: 'Counter-Strike',
-    price: 3000,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/735911/pexels-photo-735911.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Набор скинов для CS:GO'
-  },
-  {
-    id: 6,
-    name: 'Dota 2 Items',
-    game: 'Dota 2',
-    price: 2500,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Предметы для Dota 2'
-  },
-];
+import { useGetProductsQuery } from '../api/apiSlice';
 
 interface ProductCatalogProps {
-  searchQuery: string;
+  selectedCategory: number | undefined;
 }
 
-const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
-  const filteredProducts = useMemo(() => {
-    if (!searchQuery) return mockProducts;
-    
-    return mockProducts.filter(product =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.game.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [searchQuery]);
+const ProductCatalog: React.FC<ProductCatalogProps> = ({ selectedCategory }) => {
+  const { data: products, isLoading, error } = useGetProductsQuery(selectedCategory);
 
+  if (isLoading) {
+    return (
+      <Box sx={{ px: 2, pb: 2, display: 'flex', justifyContent: 'center', py: 4 }}>
+        <CircularProgress sx={{ color: '#DEB544' }} />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ px: 2, pb: 2, textAlign: 'center', py: 4 }}>
+        <Typography variant="body1" sx={{ color: '#ff6b6b' }}>
+          Ошибка загрузки товаров
+        </Typography>
+      </Box>
+    );
+  }
   return (
     <Box sx={{ px: 2, pb: 2 }}>
       <Typography variant="h6" sx={{ color: '#FFFFFF', mb: 2, fontWeight: 600 }}>
@@ -82,25 +34,14 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ searchQuery }) => {
       </Typography>
       
       <Grid container spacing={2}>
-        {filteredProducts.map((product) => (
-      <Box
-  sx={{
-    display: 'grid',
-    gap: 2,
-    gridTemplateColumns: '1fr', // по умолчанию 1 колонка
-    '@media (min-width: 370px)': {
-      gridTemplateColumns: '1fr 1fr', // >= 370px — 2 колонки
-    },
-  }}
->
-  {filteredProducts.map(product => (
-    <ProductCard key={product.id} product={product} />
-  ))}
-</Box>
+        {products?.map((product) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
+            <ProductCard product={product} />
+          </Grid>
         ))}
       </Grid>
 
-      {filteredProducts.length === 0 && (
+      {products?.length === 0 && (
         <Box sx={{ textAlign: 'center', py: 4 }}>
           <Typography variant="body1" sx={{ color: '#CCCCCC' }}>
             Товары не найдены

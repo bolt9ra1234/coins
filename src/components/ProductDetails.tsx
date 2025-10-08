@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -7,80 +7,61 @@ import {
   Card,
   CardContent,
   IconButton,
+  CircularProgress,
 } from '@mui/material';
 import { ArrowLeft } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { Product } from '../types/product';
-
-// Временные данные товаров (те же что в каталоге)
-const mockProducts: Product[] = [
-  {
-    id: 1,
-    name: 'Игра - No Name',
-    game: 'No Name',
-    price: 2000,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Игровая валюта для популярной игры No Name. Получите преимущество в игре с нашей надежной и быстрой доставкой валюты. Все транзакции безопасны и проходят мгновенно.'
-  },
-  {
-    id: 2,
-    name: 'Игра - No Name',
-    game: 'No Name',
-    price: 2000,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Игровая валюта для популярной игры No Name. Получите преимущество в игре с нашей надежной и быстрой доставкой валюты. Все транзакции безопасны и проходят мгновенно.'
-  },
-  {
-    id: 3,
-    name: 'World of Warcraft Gold',
-    game: 'World of Warcraft',
-    price: 1500,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Золото для World of Warcraft. Быстрая доставка золота на ваш сервер. Мы гарантируем безопасность сделки и конфиденциальность ваших данных.'
-  },
-  {
-    id: 4,
-    name: 'Fortnite V-Bucks',
-    game: 'Fortnite',
-    price: 1000,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'В-баксы для Fortnite. Покупайте скины, эмоции и другие предметы в игре. Мгновенное пополнение баланса после оплаты.'
-  },
-  {
-    id: 5,
-    name: 'CS:GO Skin Pack',
-    game: 'Counter-Strike',
-    price: 3000,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Набор скинов для CS:GO. Эксклюзивные скины для оружия, которые сделают вас заметным на поле боя. Все скины проверены и безопасны.'
-  },
-  {
-    id: 6,
-    name: 'Dota 2 Items',
-    game: 'Dota 2',
-    price: 2500,
-    currency: '₽',
-    image: 'https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Предметы для Dota 2. Редкие и эпические предметы для ваших любимых героев. Улучшите внешний вид персонажей и покажите свой стиль.'
-  },
-];
+import { useGetProductQuery, useGetCategoriesQuery } from '../api/apiSlice';
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const product = mockProducts.find(p => p.id === Number(id));
+  const { data: product, isLoading: productLoading, error: productError } = useGetProductQuery(Number(id));
+  const { data: categories } = useGetCategoriesQuery();
+
+  const categoryName = useMemo(() => {
+    if (!product || !categories) return '';
+    const category = categories.find(cat => cat.id === product.category_id);
+    return category?.name || '';
+  }, [product, categories]);
+
+  if (productLoading) {
+    return (
+      <Box sx={{ minHeight: '100vh', backgroundColor: '#111111', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <CircularProgress sx={{ color: '#DEB544' }} />
+      </Box>
+    );
+  }
+
+  if (productError) {
+    return (
+      <Box sx={{ minHeight: '100vh', backgroundColor: '#111111', p: 2, textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <Typography variant="h6" sx={{ color: '#ff6b6b', mb: 2 }}>
+          Ошибка загрузки товара
+        </Typography>
+        <Button
+          variant="contained"
+          onClick={() => navigate('/')}
+          sx={{
+            backgroundColor: '#DEB544',
+            color: '#111111',
+            '&:hover': {
+              backgroundColor: '#E1B842',
+            },
+          }}
+        >
+          Вернуться к каталогу
+        </Button>
+      </Box>
+    );
+  }
 
   if (!product) {
     return (
-      <Box sx={{ p: 2, textAlign: 'center' }}>
+      <Box sx={{ minHeight: '100vh', backgroundColor: '#111111', p: 2, textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <Typography variant="h6" sx={{ color: '#FFFFFF', mb: 2 }}>
           Товар не найден
         </Typography>
@@ -147,7 +128,7 @@ const ProductDetails: React.FC = () => {
           {/* Изображение товара */}
           <Box
             component="img"
-            src={product.image}
+            src={product.image_url}
             alt={product.name}
             sx={{
               width: '100%',
@@ -172,7 +153,7 @@ const ProductDetails: React.FC = () => {
               {product.name}
             </Typography>
 
-            {/* Игра */}
+            {/* Категория */}
             <Typography
               variant="body2"
               sx={{
@@ -181,7 +162,7 @@ const ProductDetails: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              {product.game}
+              {categoryName}
             </Typography>
 
             {/* Цена */}
@@ -207,7 +188,7 @@ const ProductDetails: React.FC = () => {
                   fontWeight: 700,
                 }}
               >
-                {product.price} {product.currency}
+                {product.price} ₽
               </Typography>
             </Box>
 

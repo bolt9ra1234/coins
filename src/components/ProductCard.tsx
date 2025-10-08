@@ -112,7 +112,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
 <Box
   component="img"
-  src={product.image}
+  src={product.image_url}
   alt={product.name}
   sx={{
     width: '100%',
@@ -141,7 +141,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         />
 
            <PriceText variant="h2">
-          {product.price} {product.currency}
+          {product.price} ₽
         </PriceText>
          </Box>
         <BuyButton

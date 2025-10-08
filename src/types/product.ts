@@ -1,9 +1,15 @@
 export interface Product {
   id: number;
   name: string;
-  game: string;
+  category_id: number;
   price: number;
-  currency: string;
-  image: string;
+  quantity: number;
+  image_url: string;
+  description: string;
+}
+
+export interface Category {
+  id: number;
+  name: string;
   description: string;
 }

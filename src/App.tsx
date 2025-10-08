@@ -6,16 +6,16 @@ import theme from './theme';
 import { store } from './store/store';
 import Header from './components/Header';
 import AppBanner from './components/AppBanner';
-import SearchBar from './components/SearchBar';
+import CategorySelect from './components/CategorySelect';
 import ProductCatalog from './components/ProductCatalog';
 import CartButton from './components/CartButton';
 import ProductDetails from './components/ProductDetails';
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<number | undefined>(undefined);
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
+  const handleCategoryChange = (categoryId: number | undefined) => {
+    setSelectedCategory(categoryId);
   };
 
   return (
@@ -30,8 +30,8 @@ function App() {
                 <Box sx={{ minHeight: '100vh', backgroundColor: '#111111', pb: 10 }}>
                   <Header />
                   <AppBanner />
-                  <SearchBar onSearch={handleSearch} />
-                  <ProductCatalog searchQuery={searchQuery} />
+                  <CategorySelect selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} />
+                  <ProductCatalog selectedCategory={selectedCategory} />
                   <CartButton />
                 </Box>
               }
