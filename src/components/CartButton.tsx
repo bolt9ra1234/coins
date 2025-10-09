@@ -13,7 +13,7 @@ const CartButton: React.FC = () => {
   const totalItems = cart?.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   // Добавим логирование для отладки
-  console.log('cart:', cart);
+  console.log('CartButton cart:', cart);
   console.log('CartButton - cart:', cart);
   console.log('CartButton - totalItems:', totalItems);
 
