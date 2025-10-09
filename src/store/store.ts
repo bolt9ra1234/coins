@@ -4,7 +4,7 @@ import { apiSlice } from '../api/apiSlice';
 
 export const store = configureStore({
   reducer: {
-    cart: cartSlice.reducer,
+    cartUI: cartSlice.reducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>

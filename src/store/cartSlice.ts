@@ -1,40 +1,28 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
+// Теперь корзина управляется через API, но оставляем слайс для локального состояния UI
+interface CartUIState {
+  isOpen: boolean;
 }
 
-interface CartState {
-  items: CartItem[];
-  totalItems: number;
-}
-
-const initialState: CartState = {
-  items: [],
-  totalItems: 0,
+const initialState: CartUIState = {
+  isOpen: false,
 };
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: 'cartUI',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<Omit<CartItem, 'quantity'>>) => {
-      const existingItem = state.items.find(item => item.id === action.payload.id);
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        state.items.push({ ...action.payload, quantity: 1 });
-      }
-      state.totalItems = state.items.reduce((total, item) => total + item.quantity, 0);
+    openCart: (state) => {
+      state.isOpen = true;
     },
-    removeFromCart: (state, action: PayloadAction<number>) => {
-      state.items = state.items.filter(item => item.id !== action.payload);
-      state.totalItems = state.items.reduce((total, item) => total + item.quantity, 0);
+    closeCart: (state) => {
+      state.isOpen = false;
+    },
+    toggleCart: (state) => {
+      state.isOpen = !state.isOpen;
     },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { openCart, closeCart, toggleCart } = cartSlice.actions;

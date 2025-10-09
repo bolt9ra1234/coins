@@ -10,17 +10,15 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { ArrowLeft } from 'lucide-react';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/cartSlice';
-import { useGetProductQuery, useGetCategoriesQuery } from '../api/apiSlice';
+import { useGetProductQuery, useGetCategoriesQuery, useAddToCartMutation } from '../api/apiSlice';
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const { data: product, isLoading: productLoading, error: productError } = useGetProductQuery(Number(id));
   const { data: categories } = useGetCategoriesQuery();
+  const [addToCart, { isLoading: isAdding }] = useAddToCartMutation();
 
   const categoryName = useMemo(() => {
     if (!product || !categories) return '';
@@ -82,12 +80,17 @@ const ProductDetails: React.FC = () => {
     );
   }
 
-  const handleAddToCart = () => {
-    dispatch(addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price
-    }));
+  const handleAddToCart = async () => {
+    if (!product) return;
+    
+    try {
+      await addToCart({
+        product_id: product.id,
+        quantity: 1,
+      }).unwrap();
+    } catch (error) {
+      console.error('Ошибка добавления в корзину:', error);
+    }
   };
 
   const handleBack = () => {
@@ -210,6 +213,7 @@ const ProductDetails: React.FC = () => {
               fullWidth
               variant="contained"
               onClick={handleAddToCart}
+              disabled={isAdding}
               sx={{
                 backgroundColor: '#DEB544',
                 color: '#111111',
@@ -222,7 +226,7 @@ const ProductDetails: React.FC = () => {
                 },
               }}
             >
-              Купить
+              {isAdding ? 'Добавление...' : 'Купить'}
             </Button>
           </CardContent>
         </Card>

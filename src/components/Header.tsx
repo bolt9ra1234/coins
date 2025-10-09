@@ -1,11 +1,20 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Badge, IconButton, Box } from '@mui/material';
 import { ShoppingCart } from 'lucide-react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
+import { useDispatch } from 'react-redux';
+import { toggleCart } from '../store/cartSlice';
+import { useGetCartQuery } from '../api/apiSlice';
 
 const Header: React.FC = () => {
-  const totalItems = useSelector((state: RootState) => state.cart.totalItems);
+  const dispatch = useDispatch();
+  const { data: cartData } = useGetCartQuery();
+  
+  const cart = cartData?.[0];
+  const totalItems = cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
+
+  const handleCartClick = () => {
+    dispatch(toggleCart());
+  };
 
   return (
     <Box position="static" sx={{ backgroundColor: '#111111', boxShadow: 'none', }}>
@@ -54,7 +63,7 @@ const Header: React.FC = () => {
             </Box>
           </Box>
           
-          <IconButton sx={{ color: '#DEB544' }}>
+          <IconButton sx={{ color: '#DEB544' }} onClick={handleCartClick}>
             <Badge badgeContent={totalItems} color="primary">
               <ShoppingCart />
             </Badge>

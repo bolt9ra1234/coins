@@ -10,7 +10,7 @@ import {
   styled,
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/cartSlice';
+import { useAddToCartMutation } from '../api/apiSlice';
 import { Product } from '../types/product';
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -91,15 +91,18 @@ interface ProductCardProps {
   product: Product;
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [addToCart, { isLoading: isAdding }] = useAddToCartMutation();
 
-  const handleAddToCart = () => {
-    dispatch(addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price
-    }));
+  const handleAddToCart = async () => {
+    try {
+      await addToCart({
+        product_id: product.id,
+        quantity: 1,
+      }).unwrap();
+    } catch (error) {
+      console.error('Ошибка добавления в корзину:', error);
+    }
   };
  
   const handleShowDetails = () => {
@@ -147,8 +150,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <BuyButton
           variant="contained"
           onClick={handleAddToCart}
+          disabled={isAdding}
         >
-          Купить
+          {isAdding ? 'Добавление...' : 'Купить'}
         </BuyButton>
         
         <DetailsButton
