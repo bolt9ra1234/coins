@@ -10,7 +10,7 @@ const CartButton: React.FC = () => {
 
   // API возвращает массив корзин, берем первую (активную)
   const cart = cartData && cartData.length > 0 ? cartData[0] : null;
-  const totalItems = cart.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
+  const totalItems = cart?.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   // Добавим логирование для отладки
   console.log('cart:', cart);
