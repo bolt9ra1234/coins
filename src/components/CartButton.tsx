@@ -6,10 +6,16 @@ import { useGetCartQuery } from '../api/apiSlice';
 
 const CartButton: React.FC = () => {
   const dispatch = useDispatch();
-  const { data: cartData, isLoading } = useGetCartQuery();
+  const { data: cartData, isLoading, error } = useGetCartQuery();
 
-  const cart = cartData?.[0];
+  // API возвращает массив корзин, берем первую (активную)
+  const cart = cartData && cartData.length > 0 ? cartData[0] : null;
   const totalItems = cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
+
+  // Добавим логирование для отладки
+  console.log('CartButton - cartData:', cartData);
+  console.log('CartButton - cart:', cart);
+  console.log('CartButton - totalItems:', totalItems);
 
   if (isLoading) {
     return (
@@ -31,7 +37,12 @@ const CartButton: React.FC = () => {
     );
   }
 
-  if (totalItems === 0) return null;
+  if (error) {
+    console.error('CartButton - error:', error);
+    return null;
+  }
+
+  if (!cart || totalItems === 0) return null;
 
   const handleCartClick = () => {
     dispatch(toggleCart());

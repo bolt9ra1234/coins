@@ -31,12 +31,17 @@ interface CartModalProps {
 
 const CartModal: React.FC<CartModalProps> = ({ open }) => {
   const dispatch = useDispatch();
-  const { data: cartData, isLoading } = useGetCartQuery();
+  const { data: cartData, isLoading, error } = useGetCartQuery();
   const [increaseItem] = useIncreaseCartItemMutation();
   const [decreaseItem] = useDecreaseCartItemMutation();
   const [removeItem] = useRemoveFromCartMutation();
 
-  const cart = cartData?.[0];
+  // API возвращает массив корзин, берем первую (активную)
+  const cart = cartData && cartData.length > 0 ? cartData[0] : null;
+
+  // Добавим логирование для отладки
+  console.log('CartModal - cartData:', cartData);
+  console.log('CartModal - cart:', cart);
 
   const handleClose = () => {
     dispatch(closeCart());
@@ -95,7 +100,13 @@ const CartModal: React.FC<CartModalProps> = ({ open }) => {
           <Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
             <CircularProgress sx={{ color: '#DEB544' }} />
           </Box>
-        ) : !cart || cart.items.length === 0 ? (
+        ) : error ? (
+          <Box sx={{ textAlign: 'center', p: 4 }}>
+            <Typography variant="body1" sx={{ color: '#ff6b6b' }}>
+              Ошибка загрузки корзины
+            </Typography>
+          </Box>
+        ) : !cart || !cart.items || cart.items.length === 0 ? (
           <Box sx={{ textAlign: 'center', p: 4 }}>
             <Typography variant="body1" sx={{ color: '#CCCCCC' }}>
               Корзина пуста
