@@ -8,14 +8,10 @@ const CartButton: React.FC = () => {
   const dispatch = useDispatch();
   const { data: cartData, isLoading, error } = useGetCartQuery();
 
-  // API возвращает массив корзин, берем первую (активную)
-  const cart = cartData && cartData.length > 0 ? cartData[0] : null;
+  // API возвращает объект корзины
+  const cart = cartData || null;
   const totalItems = cart?.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
-  // Добавим логирование для отладки
-  console.log('CartButton cart:', cart);
-  console.log('CartButton - cart:', cart);
-  console.log('CartButton - totalItems:', totalItems);
 
   if (isLoading) {
     return (

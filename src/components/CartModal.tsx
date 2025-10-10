@@ -36,12 +36,8 @@ const CartModal: React.FC<CartModalProps> = ({ open }) => {
   const [decreaseItem] = useDecreaseCartItemMutation();
   const [removeItem] = useRemoveFromCartMutation();
 
-  // API возвращает массив корзин, берем первую (активную)
-  const cart = cartData && cartData.length > 0 ? cartData[0] : null;
-
-  // Добавим логирование для отладки
-  console.log('CartModal - cartData:', cartData);
-  console.log('CartModal - cart:', cart);
+  // API возвращает объект корзины
+  const cart = cartData || null;
 
   const handleClose = () => {
     dispatch(closeCart());

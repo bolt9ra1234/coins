@@ -9,14 +9,9 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
   const { data: cartData, error } = useGetCartQuery();
   
-  // API возвращает массив корзин, берем первую (активную)
-  const cart = cartData && cartData.length > 0 ? cartData[0] : null;
-  const totalItems = cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
-
-  // Добавим логирование для отладки
-  console.log('Header - cartData:', cartData);
-  console.log('Header - cart:', cart);
-  console.log('Header - totalItems:', totalItems);
+  // API возвращает объект корзины
+  const cart = cartData || null;
+  const totalItems = cart?.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   const handleCartClick = () => {
     dispatch(toggleCart());
