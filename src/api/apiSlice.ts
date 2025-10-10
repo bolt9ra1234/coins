@@ -27,9 +27,6 @@ export const apiSlice = createApi({
     getProduct: builder.query<Product, number>({
       query: (id) => `products/${id}`,
     }),
-    getCart: builder.query<Cart[], void>({
-    }
-    )
     getCart: builder.query<Cart, void>({
       query: () => 'cart/',
       providesTags: ['Cart'],
