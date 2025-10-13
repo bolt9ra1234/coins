@@ -126,6 +126,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     backgroundColor: '#333',
     borderRadius: 2,
     mb: 2,
+    height: 180
   }}
   onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')}
 /> 
