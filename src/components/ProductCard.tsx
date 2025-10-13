@@ -15,7 +15,7 @@ import { Product } from '../types/product';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   width: '100%',           // важно, чтобы занимала ширину Grid item
-  minHeight: 350,          // фиксированная минимальная высота
+  height: '100%',          // растягивается по высоте Grid item
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-start',

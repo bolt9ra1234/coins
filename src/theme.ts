@@ -4,7 +4,7 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 370, // кастомный брейкпоинт
+      sm: 375, // кастомный брейкпоинт для мобильных
       md: 900,
       lg: 1200,
       xl: 1536,
