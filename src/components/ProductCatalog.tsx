@@ -36,7 +36,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ selectedCategory }) => 
 <Box sx={{ width: '100%' }}>
   <Grid container spacing={2}>
     {products?.map((product) => (
-      <Grid item xs={6} sm={6} md={4} lg={3} key={product.id}>
+      <Grid item xs={6} sm={4} md={3} lg={3} key={product.id}>
         <ProductCard product={product} />
       </Grid>
     ))}
