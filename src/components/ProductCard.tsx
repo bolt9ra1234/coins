@@ -114,22 +114,28 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 
 <Box
-  component="img"
-  src={product.image_url}
-  alt={product.name}
   sx={{
-    display: 'block',
-    width: '100%',
-    height: 150,
-    maxHeight: 250,
-    objectFit: 'contain',
-    backgroundColor: '#333',
+    width: '100%',           // карточка занимает всю ширину колонки
+    aspectRatio: '1 / 1',    // квадратная область (или 4/3, если хочешь)
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#222',
     borderRadius: 2,
-    mb: 2,
-    height: 180
+    overflow: 'hidden',
   }}
-  onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')}
-/> 
+>
+  <Box
+    component="img"
+    src={product.image_url}
+    alt={product.name}
+    sx={{
+      maxWidth: '100%',
+      maxHeight: '100%',
+      objectFit: 'contain',
+    }}
+  />
+</Box>
         
         <GameTitle variant="h1">
           {product.name}
