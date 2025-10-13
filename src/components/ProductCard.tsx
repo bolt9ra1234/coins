@@ -114,7 +114,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
 <Box
   sx={{
-    width: '100%',           // занимает всю ширину карточки
+    width: "140px",           // занимает всю ширину карточки
     height: 120,             // фиксированная высота для всех изображений
     aspectRatio: '1 / 1',    // фиксированное соотношение сторон
     display: 'flex',
