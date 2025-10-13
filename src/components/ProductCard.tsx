@@ -113,8 +113,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
 <Box
   sx={{
-    width: '100%',        // занимает ширину карточки (Grid item)
-    aspectRatio: '1 / 1', // квадратная область
+    width: '100%',           // занимает всю ширину карточки
+    aspectRatio: '1 / 1',    // фиксированное соотношение сторон
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -129,9 +129,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     src={product.image_url}
     alt={product.name}
     sx={{
-      maxWidth: '160px',
-      maxHeight: '100%',
-      objectFit: 'contain',
+      maxWidth: '100%',       // растягивается по ширине контейнера
+      maxHeight: '100%',      // не выходит за пределы контейнера
+      objectFit: 'contain',   // сохраняет пропорции
       display: 'block',
     }}
     onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')}
