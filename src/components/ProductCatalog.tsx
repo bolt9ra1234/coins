@@ -33,13 +33,15 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ selectedCategory }) => 
         Каталог
       </Typography>
       
-<Grid container spacing={2}>
-  {products?.map((product) => (
-    <Grid item xs={6} sm={6} md={4} lg={3} key={product.id}>
-      <ProductCard product={product} />
-    </Grid>
-  ))}
-</Grid>
+<Box sx={{ width: '100%' }}>
+  <Grid container spacing={2}>
+    {products?.map((product) => (
+      <Grid item xs={6} sm={6} md={4} lg={3} key={product.id}>
+        <ProductCard product={product} />
+      </Grid>
+    ))}
+  </Grid>
+</Box>
 
       {products?.length === 0 && (
         <Box sx={{ textAlign: 'center', py: 4 }}>
