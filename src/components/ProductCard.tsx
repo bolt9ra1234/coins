@@ -115,14 +115,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
 <Box
   sx={{
-    width: '100%',           // карточка занимает всю ширину колонки
-    aspectRatio: '1 / 1',    // квадратная область (или 4/3, если хочешь)
+    width: '100%',            // карточка занимает всю ширину колонки
+    aspectRatio: '1 / 1',     // квадратная область для картинки
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#222',
     borderRadius: 2,
     overflow: 'hidden',
+    mb: 2,
   }}
 >
   <Box
@@ -133,7 +134,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       maxWidth: '100%',
       maxHeight: '100%',
       objectFit: 'contain',
+      display: 'block',
     }}
+    onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')}
   />
 </Box>
         
