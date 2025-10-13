@@ -124,7 +124,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     borderRadius: 2,
     overflow: 'hidden',
     mb: 2,
-       '@media (max-width:375px)': {
+       '@media (max-width:376px)': {
       width: '100%',          // на узких экранах 100%
     },
   }}
