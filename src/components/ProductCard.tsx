@@ -118,15 +118,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   src={product.image_url}
   alt={product.name}
   sx={{
+    display: 'block',
     width: '100%',
-    height: "150px",
-    maxHeight: 250, // можно ограничить, чтобы карточка не была слишком большой
+    height: 150,
+    maxHeight: 250,
+    objectFit: 'contain',
+    backgroundColor: '#333',
     borderRadius: 2,
     mb: 2,
-    objectFit: 'contain', // не обрезает картинку
-    backgroundColor: '#333',
   }}
-  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+  onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')}
 />
         
         <GameTitle variant="h1">
