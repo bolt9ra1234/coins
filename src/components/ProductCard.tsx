@@ -128,7 +128,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     mb: 2,
   }}
   onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')}
-/>
+/> 
         
         <GameTitle variant="h1">
           {product.name}
