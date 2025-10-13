@@ -15,6 +15,7 @@ import { Product } from '../types/product';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   width: '100%',           // важно, чтобы занимала ширину Grid item
+  minHeight: 350,          // фиксированная минимальная высота
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-start',
@@ -114,6 +115,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 <Box
   sx={{
     width: '100%',           // занимает всю ширину карточки
+    height: 120,             // фиксированная высота для всех изображений
     aspectRatio: '1 / 1',    // фиксированное соотношение сторон
     display: 'flex',
     alignItems: 'center',
