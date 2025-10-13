@@ -113,15 +113,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
 <Box
   sx={{
-    width: '100%',            // карточка занимает всю ширину колонки
-    aspectRatio: '1 / 1',     // квадратная область для картинки
+    width: '100%',        // занимает ширину карточки (Grid item)
+    aspectRatio: '1 / 1', // квадратная область
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#222',
     borderRadius: 2,
     overflow: 'hidden',
-    mb: 2, 
+    mb: 2,
   }}
 >
   <Box
@@ -136,6 +136,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }}
     onError={(e) => ((e.target as HTMLImageElement).style.display = 'none')}
   />
+</Box>
 </Box>
         
         <GameTitle variant="h1">
