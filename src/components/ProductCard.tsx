@@ -14,16 +14,14 @@ import { useAddToCartMutation } from '../api/apiSlice';
 import { Product } from '../types/product';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-
-  maxWidth: '100%',
-  backgroundColor: '#191818',
-  borderRadius: 15,
-  overflow: 'hidden',
-  position: 'relative',
+  width: '100%',           // важно, чтобы занимала ширину Grid item
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
   padding: theme.spacing(1),
+  borderRadius: 15,
+  backgroundColor: '#191818',
   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
 }));
 
