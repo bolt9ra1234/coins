@@ -123,7 +123,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     backgroundColor: '#222',
     borderRadius: 2,
     overflow: 'hidden',
-    mb: 2,
+    mb: 2, 
   }}
 >
   <Box
