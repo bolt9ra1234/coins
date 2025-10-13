@@ -129,7 +129,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     src={product.image_url}
     alt={product.name}
     sx={{
-      maxWidth: '170px',
+      maxWidth: '160px',
       maxHeight: '100%',
       objectFit: 'contain',
       display: 'block',
