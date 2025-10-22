@@ -66,7 +66,7 @@ const DetailsButton = styled(Button)(({ theme }) => ({
   height: 40,
   borderRadius: 35,
   backgroundColor: 'transparent',
-  color: '#111111',
+  color: '#f5f5f5',
   fontFamily: 'Inknut Antiqua, serif',
   fontWeight: 700,
   fontSize: '16px',
