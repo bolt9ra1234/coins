@@ -42,27 +42,7 @@ const Header: React.FC = () => {
         </Box>
         
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-            <Typography variant="body2" sx={{ color: '#DEB544', fontWeight: 600 }}>
-              999
-            </Typography>
-            <Box
-              sx={{
-                width: 20,
-                height: 20,
-                backgroundColor: '#DEB544',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '12px',
-                color: '#111111',
-                fontWeight: 'bold'
-              }}
-            >
-              +
-            </Box>
-          </Box>
+      
           
           <IconButton sx={{ color: '#DEB544' }} onClick={handleCartClick}>
             <Badge badgeContent={totalItems} color="primary">
