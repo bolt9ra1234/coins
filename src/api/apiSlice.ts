@@ -5,7 +5,7 @@ import { Cart, AddToCartRequest } from '../types/cart';
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://digital-store.dev.routeam.ru/',
+    baseUrl: 'https://api.digital-store.dev.routeam.ru/',
     prepareHeaders: (headers) => {
       // Добавляем заголовок X-Telegram-User-Id для всех запросов
       // В реальном приложении это будет браться из Telegram WebApp API
