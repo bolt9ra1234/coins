@@ -132,7 +132,7 @@ const CartModal: React.FC<CartModalProps> = ({ open }) => {
                         onClick={() => handleDecrease(item.id)}
                         sx={{ color: '#DEB544', backgroundColor: '#2A2A2A' }}
                       >
-                        <Minus size={18} />
+                        <Minus size={20} />
                       </IconButton>
                       
                       <Typography variant="body2" sx={{ color: '#FFFFFF', minWidth: 20, textAlign: 'center' }}>
@@ -144,7 +144,7 @@ const CartModal: React.FC<CartModalProps> = ({ open }) => {
                         onClick={() => handleIncrease(item.id)}
                         sx={{ color: '#DEB544', backgroundColor: '#2A2A2A' }}
                       >
-                        <Plus size={18} />
+                        <Plus size={20} />
                       </IconButton>
                       
                       <IconButton
@@ -152,7 +152,7 @@ const CartModal: React.FC<CartModalProps> = ({ open }) => {
                         onClick={() => handleRemove(item.id)}
                         sx={{ color: '#ff6b6b', backgroundColor: '#2A2A2A', ml: 1 }}
                       >
-                        <Trash2 size={18} />
+                        <Trash2 size={20} />
                       </IconButton>
                     </Box>
                   </ListItemSecondaryAction>
