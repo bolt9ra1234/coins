@@ -38,7 +38,11 @@ function AppContent() {
               </Box>
             }
           />
-          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/product/:id" element={
+             <Box sx={{ minHeight: '100vh', backgroundColor: '#111111', pb: 10 }}>
+          <ProductDetails />
+               </Box>
+          } />
         </Routes>
       </Router>
     </ThemeProvider>
