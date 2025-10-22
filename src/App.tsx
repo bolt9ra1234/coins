@@ -40,7 +40,8 @@ function AppContent() {
           />
           <Route path="/product/:id" element={
              <Box sx={{ minHeight: '100vh', backgroundColor: '#111111', pb: 10 }}>
-          <ProductDetails />
+                <ProductDetails />
+               <CartButton />
                </Box>
           } />
         </Routes>
