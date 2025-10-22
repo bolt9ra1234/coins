@@ -164,19 +164,19 @@ const handleDetailsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         </PriceText>
          </Box>
         <BuyButton
-          variant="contained"
-          onClick={handleAddToCart}
-          disabled={isAdding}
-        >
-          {isAdding ? 'Добавление...' : 'Купить'}
-        </BuyButton>
-        
-        <DetailsButton
-          variant="outlined"
-          onClick={handleShowDetails}
-        >
-          Подробнее
-        </DetailsButton>
+  variant="contained"
+  onClick={handleAddToCart}
+  disabled={isAdding}
+>
+  {isAdding ? 'Добавление...' : 'Купить'}
+</BuyButton>
+
+<DetailsButton
+  variant="outlined"
+  onClick={handleDetailsClick}
+>
+  Подробнее
+</DetailsButton>
       </Box>
     </StyledCard>
   );
