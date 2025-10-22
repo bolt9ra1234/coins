@@ -111,7 +111,7 @@ const handleDetailsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 };
 
   return (
-    <StyledCard onClick={handleShowDetails}>
+    <StyledCard onClick={handleDetailsClick}>
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 
 <Box
