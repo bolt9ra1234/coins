@@ -52,7 +52,6 @@ const CartButton: React.FC = () => {
         left: 0,
         right: 0,
         p: 2,
-        borderTop: '1px solid #2A2A2A',
       }}
     >
       <Button
