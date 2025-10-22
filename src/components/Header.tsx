@@ -41,9 +41,7 @@ const Header: React.FC = () => {
           </Box>
         </Box>
         
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-      
-          
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>    
           <IconButton sx={{ color: '#DEB544' }} onClick={handleCartClick}>
             <Badge badgeContent={totalItems} color="primary">
               <ShoppingCart />
