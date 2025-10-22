@@ -93,25 +93,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
   const [addToCart, { isLoading: isAdding }] = useAddToCartMutation();
 
-  const handleAddToCart = async () => {
-    try {
-      await addToCart({
-        product_id: product.id,
-        quantity: 1,
-      }).unwrap();
-    } catch (error) {
-      console.error('Ошибка добавления в корзину:', error);
-    }
-  };
-
-    const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-  e.stopPropagation(); // <-- предотвращает срабатывание handleShowDetails
-  // здесь логика кнопки
+ const handleAddToCart = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.stopPropagation(); // <-- останавливаем всплытие
+  try {
+    await addToCart({
+      product_id: product.id,
+      quantity: 1,
+    }).unwrap();
+  } catch (error) {
+    console.error('Ошибка добавления в корзину:', error);
+  }
 };
- 
-  const handleShowDetails = () => {
-    navigate(`/product/${product.id}`);
-  };
+
+const handleDetailsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.stopPropagation(); // <-- останавливаем всплытие
+  navigate(`/product/${product.id}`);
+};
 
   return (
     <StyledCard onClick={handleShowDetails}>
