@@ -103,6 +103,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       console.error('Ошибка добавления в корзину:', error);
     }
   };
+
+    const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.stopPropagation(); // <-- предотвращает срабатывание handleShowDetails
+  // здесь логика кнопки
+};
  
   const handleShowDetails = () => {
     navigate(`/product/${product.id}`);
