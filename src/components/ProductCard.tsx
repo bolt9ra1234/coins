@@ -109,7 +109,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <StyledCard>
+    <StyledCard onClick={handleShowDetails}>
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 
 <Box
